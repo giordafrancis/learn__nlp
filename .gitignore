@@ -1,2 +1,7 @@
 # ignore any data held in repo
 data/
+
+# checkpoints
+.ipynb_checkpoints/
+.ipynb_checkpoints
+transformers-course-hf/.ipynb_checkpoints

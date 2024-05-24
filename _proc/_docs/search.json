@@ -1,0 +1,162 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "foo\n\n foo ()",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "learn__nlp",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation.",
+    "crumbs": [
+      "learn__nlp"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "learn__nlp",
+    "section": "Install",
+    "text": "Install\npip install learn__nlp",
+    "crumbs": [
+      "learn__nlp"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "learn__nlp",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2",
+    "crumbs": [
+      "learn__nlp"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_modern_approaches.html",
+    "href": "topic_modelling_modern_approaches.html",
+    "title": "Topic Modelling Modern Approaches",
+    "section": "",
+    "text": "NLP Tasks: Topic modeling is part of unsupervised learning in NLP, often used for text mining, information retrieval, and content recommendation.\nMachine Learning: It utilizes unsupervised machine learning algorithms to discover hidden patterns in data without predefined labels or categories.\n\nTopic modelling is a technique in natural language processing (NLP) used to uncover the underlying topics that are present in a collection of documents. It helps in identifying patterns and organizing large sets of textual data by clustering similar words and phrases into topics. This technique is particularly useful for summarizing, categorizing, and analyzing text data.",
+    "crumbs": [
+      "Topic Modelling Modern Approaches"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_modern_approaches.html#where-topic-modelling-fits-in-nlp-and-machine-learning",
+    "href": "topic_modelling_modern_approaches.html#where-topic-modelling-fits-in-nlp-and-machine-learning",
+    "title": "Topic Modelling Modern Approaches",
+    "section": "",
+    "text": "NLP Tasks: Topic modeling is part of unsupervised learning in NLP, often used for text mining, information retrieval, and content recommendation.\nMachine Learning: It utilizes unsupervised machine learning algorithms to discover hidden patterns in data without predefined labels or categories.\n\nTopic modelling is a technique in natural language processing (NLP) used to uncover the underlying topics that are present in a collection of documents. It helps in identifying patterns and organizing large sets of textual data by clustering similar words and phrases into topics. This technique is particularly useful for summarizing, categorizing, and analyzing text data.",
+    "crumbs": [
+      "Topic Modelling Modern Approaches"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_modern_approaches.html#code-samples",
+    "href": "topic_modelling_modern_approaches.html#code-samples",
+    "title": "Topic Modelling Modern Approaches",
+    "section": "Code samples",
+    "text": "Code samples\n\nExample of a simple document term matrix\n\nfrom sklearn.feature_extraction.text import CountVectorizer\n\n# Sample documents\ndocuments = [\n    \"The quick brown fox\",\n    \"jumps over the lazy dog\",\n    \"The fox\",\n    \"The dog is lazy\"\n]\n\n# Initialize CountVectorizer\nvectorizer = CountVectorizer()\n\n# Fit and transform the documents\nX = vectorizer.fit_transform(documents)\n\n# Convert to array and print\nprint(X.toarray())\n\n# Feature names (vocabulary)\nprint(vectorizer.get_feature_names_out())\n\n[[1 0 1 0 0 0 0 1 1]\n [0 1 0 0 1 1 1 0 1]\n [0 0 1 0 0 0 0 0 1]\n [0 1 0 1 0 1 0 0 1]]\n['brown' 'dog' 'fox' 'is' 'jumps' 'lazy' 'over' 'quick' 'the']",
+    "crumbs": [
+      "Topic Modelling Modern Approaches"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_modern_approaches.html#term-embedding",
+    "href": "topic_modelling_modern_approaches.html#term-embedding",
+    "title": "Topic Modelling Modern Approaches",
+    "section": "Term Embedding",
+    "text": "Term Embedding\nEmbeddings are dense vector representations of words or phrases that capture semantic meanings. Unlike sparse representations like one-hot encoding, embeddings map words to continuous vector spaces where semantically similar words have similar representations. These vectors are typically of lower dimensions (e.g., 100-300 dimensions) compared to the vocabulary size.\n\nImportance of Embeddings\n\nSemantic Similarity: Words with similar meanings are closer in the embedding space.\nDimensionality Reduction: Embeddings reduce the dimensionality of text data while preserving meaningful relationships.\nImproved Performance: Embeddings improve the performance of NLP models by providing more informative features compared to traditional methods.\n\n\n\nPopular Embedding Strategies\n\nWord2Vec: Predicts a word given its context (Skip-gram) or predicts the context given a word (CBOW).\nGloVe (Global Vectors for Word Representation): Uses co-occurrence statistics to learn word embeddings.\nFastText: Extends Word2Vec by considering subword information, which helps with out-of-vocabulary words.\nBERT (Bidirectional Encoder Representations from Transformers): Uses transformer-based architecture to create context-aware embeddings.",
+    "crumbs": [
+      "Topic Modelling Modern Approaches"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_modern_approaches.html#implementation-example-word2vec-with-gensim",
+    "href": "topic_modelling_modern_approaches.html#implementation-example-word2vec-with-gensim",
+    "title": "Topic Modelling Modern Approaches",
+    "section": "Implementation Example: Word2Vec with Gensim",
+    "text": "Implementation Example: Word2Vec with Gensim\n\nCode Samples\n\nfrom gensim.models import Word2Vec\nfrom gensim.utils import simple_preprocess\nfrom gensim.test.utils import common_texts  # Example dataset\n\n# Tokenize and preprocess the text\nsentences = [simple_preprocess(\" \".join(doc)) for doc in common_texts]\n\n# Train Word2Vec model\nmodel = Word2Vec(sentences, vector_size=100, window=5, min_count=1, workers=4)\n\n# Save the model\nmodel.save(\"word2vec.model\")\n\n# Load the model\nmodel = Word2Vec.load(\"word2vec.model\")\n\n# Get the vector for a specific word\nvector = model.wv['computer']\nprint(vector)\n\n[-0.00515774 -0.00667028 -0.0077791   0.00831315 -0.00198292 -0.00685696\n -0.0041556   0.00514562 -0.00286997 -0.00375075  0.0016219  -0.0027771\n -0.00158482  0.0010748  -0.00297881  0.00852176  0.00391207 -0.00996176\n  0.00626142 -0.00675622  0.00076966  0.00440552 -0.00510486 -0.00211128\n  0.00809783 -0.00424503 -0.00763848  0.00926061 -0.00215612 -0.00472081\n  0.00857329  0.00428459  0.0043261   0.00928722 -0.00845554  0.00525685\n  0.00203994  0.0041895   0.00169839  0.00446543  0.0044876   0.0061063\n -0.00320303 -0.00457706 -0.00042664  0.00253447 -0.00326412  0.00605948\n  0.00415534  0.00776685  0.00257002  0.00811905 -0.00138761  0.00808028\n  0.0037181  -0.00804967 -0.00393476 -0.0024726   0.00489447 -0.00087241\n -0.00283173  0.00783599  0.00932561 -0.0016154  -0.00516075 -0.00470313\n -0.00484746 -0.00960562  0.00137242 -0.00422615  0.00252744  0.00561612\n -0.00406709 -0.00959937  0.00154715 -0.00670207  0.0024959  -0.00378173\n  0.00708048  0.00064041  0.00356198 -0.00273993 -0.00171105  0.00765502\n  0.00140809 -0.00585215 -0.00783678  0.00123305  0.00645651  0.00555797\n -0.00897966  0.00859466  0.00404816  0.00747178  0.00974917 -0.0072917\n -0.00904259  0.0058377   0.00939395  0.00350795]\n\n\n\nuwords = set(w for doc in common_texts for w in doc)\nuwords, len(uwords)\n\n({'computer',\n  'eps',\n  'graph',\n  'human',\n  'interface',\n  'minors',\n  'response',\n  'survey',\n  'system',\n  'time',\n  'trees',\n  'user'},\n 12)\n\n\n\nprint(model.wv)\nlen(vector)\n\nKeyedVectors&lt;vector_size=100, 12 keys&gt;\n\n\n100",
+    "crumbs": [
+      "Topic Modelling Modern Approaches"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_modern_approaches.html#implementation-using-bertopic",
+    "href": "topic_modelling_modern_approaches.html#implementation-using-bertopic",
+    "title": "Topic Modelling Modern Approaches",
+    "section": "Implementation using BerTopic",
+    "text": "Implementation using BerTopic\nBerTopic docs are a great reference.\n\nfrom bertopic import BERTopic\nfrom sklearn.datasets import fetch_20newsgroups\n\n# Load dataset\nnewsgroups_train = fetch_20newsgroups(subset='train')\ndocs = newsgroups_train.data\n\n# Initialize BERTopic\ntopic_model = BERTopic()\n\n# Fit the model\ntopics, _ = topic_model.fit_transform(docs)\n\n# Get the topics\nprint(topic_model.get_topic_info())\n\nWe can extract info at a document level.\n\n# per document info\ntopic_model.get_document_info(docs).head()\n\n\ntopic_df = topic_model.get_topic_info()\nrow = topic_df.sample(1)\ntopic_df.head()\n\n\nsimilar_topics, similarity = topic_model.find_topics(\"car\", top_n=5)\nprint(similar_topics)\ntopic_model.get_topic(similar_topics[0])",
+    "crumbs": [
+      "Topic Modelling Modern Approaches"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_bow.html",
+    "href": "topic_modelling_bow.html",
+    "title": "Topic Modelling BOW",
+    "section": "",
+    "text": "NLP Tasks: Topic modeling is part of unsupervised learning in NLP, often used for text mining, information retrieval, and content recommendation.\nMachine Learning: It utilizes unsupervised machine learning algorithms to discover hidden patterns in data without predefined labels or categories.\n\nTopic modelling is a technique in natural language processing (NLP) used to uncover the underlying topics that are present in a collection of documents. It helps in identifying patterns and organizing large sets of textual data by clustering similar words and phrases into topics. This technique is particularly useful for summarizing, categorizing, and analyzing text data.",
+    "crumbs": [
+      "Topic Modelling BOW"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_bow.html#where-topic-modelling-fits-in-nlp-and-machine-learning",
+    "href": "topic_modelling_bow.html#where-topic-modelling-fits-in-nlp-and-machine-learning",
+    "title": "Topic Modelling BOW",
+    "section": "",
+    "text": "NLP Tasks: Topic modeling is part of unsupervised learning in NLP, often used for text mining, information retrieval, and content recommendation.\nMachine Learning: It utilizes unsupervised machine learning algorithms to discover hidden patterns in data without predefined labels or categories.\n\nTopic modelling is a technique in natural language processing (NLP) used to uncover the underlying topics that are present in a collection of documents. It helps in identifying patterns and organizing large sets of textual data by clustering similar words and phrases into topics. This technique is particularly useful for summarizing, categorizing, and analyzing text data.",
+    "crumbs": [
+      "Topic Modelling BOW"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_bow.html#bag-of-words-bow-model",
+    "href": "topic_modelling_bow.html#bag-of-words-bow-model",
+    "title": "Topic Modelling BOW",
+    "section": "Bag of Words (BoW) Model",
+    "text": "Bag of Words (BoW) Model\n\nDefinition: The Bag of Words model is a simplifying representation used in natural language processing (NLP). In this model, a text (such as a sentence or a document) is represented as the bag (multiset) of its words, disregarding grammar and word order but keeping multiplicity.\nFeature Extraction: Texts are converted into fixed-length vectors. Common techniques include simple word counts, term frequency (TF), and term frequency-inverse document frequency (TF-IDF).\n\nLSA (Latent Semantic Analysis), NMF (Non-negative Matrix Factorization), and LDA (Latent Dirichlet Allocation) are considered “bag of words” models. Why:?\n\nInput Representation: All three models (LSA, NMF, LDA) take a document-term matrix as input, which is constructed using the bag of words approach.\nWord Order Ignored: The inherent characteristic of BoW models is that they do not consider the order of words. All three models operate on this premise.\nFocus on Frequency/Presence: They focus on the frequency or presence of words in documents, which is a key aspect of the bag of words approach.",
+    "crumbs": [
+      "Topic Modelling BOW"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_bow.html#common-algorithms-for-topic-modeling",
+    "href": "topic_modelling_bow.html#common-algorithms-for-topic-modeling",
+    "title": "Topic Modelling BOW",
+    "section": "Common Algorithms for Topic Modeling",
+    "text": "Common Algorithms for Topic Modeling\n\nLatent Dirichlet Allocation (LDA): One of the most popular methods, which assumes that each document is a mixture of a small number of topics and that each word in the document is attributable to one of the document’s topics. Probabilistic Model: LDA is a generative probabilistic model that assumes documents are mixtures of topics, and topics are mixtures of word\nNon-negative Matrix Factorization (NMF): A linear algebra approach that factorizes the term-document matrix into non-negative matrices.\nLatent Semantic Analysis (LSA): A technique that applies singular value decomposition (SVD) to the term-document matrix to reduce its dimensions and uncover the latent structure in the data.\n\nSummary of Why They Are BoW Model\n\nInput Representation: All three models (LSA, NMF, LDA) take a document-term matrix (eg CountVectorizer, TfIDF sparse matrices) as input, which is constructed using the bag of words approach.\nWord Order Ignored: The inherent characteristic of BoW models is that they do not consider the order of words. All three models operate on this premise.\nFocus on Frequency/Presence: They focus on the frequency or presence of words in documents, which is a key aspect of the bag of words approach.\n\n\nExample of a simple document term matrix\nUsing a sample of small docs\nUsing a vector that does a simple frequency count per document\n\n\nLDA\n\n# LDA\nimport re\nfrom sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer\nfrom sklearn.decomposition import LatentDirichletAllocation, NMF\nfrom nltk.corpus import stopwords\nfrom nltk.tokenize import word_tokenize\nfrom nltk.stem import PorterStemmer\nimport nltk\n\n# Sample documents\ndocuments = [\n    \"Human machine interface for lab abc computer applications\",\n    \"A survey of user opinion of computer system response time\",\n    \"The EPS user interface management system\",\n    \"System and human system engineering testing of EPS\",\n    \"Relation of user perceived response time to error measurement\"\n]\n\n# Preprocessing function\ndef preprocess(text):\n    # Lowercase\n    text = text.lower()\n    # Remove punctuation\n    text = re.sub(r'\\W', ' ', text)\n    # Tokenize\n    tokens = word_tokenize(text)\n    # Remove stop words\n    stop_words = set(stopwords.words('english'))\n    tokens = [word for word in tokens if word not in stop_words]\n    # Stemming\n    ps = PorterStemmer()\n    tokens = [ps.stem(word) for word in tokens]\n    return ' '.join(tokens)\n\n# Preprocess all documents\npreprocessed_documents = [preprocess(doc) for doc in documents]\n\n# Vectorize the documents using TF-IDF\ntfidf_vectorizer = TfidfVectorizer()\nX_tfidf = tfidf_vectorizer.fit_transform(preprocessed_documents)\n\n# Train the LDA model\nlda = LatentDirichletAllocation(n_components=2, random_state=0)\nlda.fit(X_tfidf)\n\n# Print the topics\nfor idx, topic in enumerate(lda.components_):\n    print(f\"Topic: {idx} \\nWords: {', '.join([tfidf_vectorizer.get_feature_names_out()[i] for i in topic.argsort()[-10:]])}\\n\")\n\nTopic: 0 \nWords: machin, abc, applic, measur, perceiv, error, relat, manag, user, interfac\n\nTopic: 1 \nWords: comput, respons, time, user, engin, test, survey, opinion, ep, system\n\n\n\n\n\nNMF\n\n# NMF\nimport re\nfrom sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer\nfrom sklearn.decomposition import LatentDirichletAllocation, NMF\nfrom nltk.corpus import stopwords\nfrom nltk.tokenize import word_tokenize\nfrom nltk.stem import PorterStemmer\nimport nltk\n\n# Sample documents\ndocuments = [\n    \"Human machine interface for lab abc computer applications\",\n    \"A survey of user opinion of computer system response time\",\n    \"The EPS user interface management system\",\n    \"System and human system engineering testing of EPS\",\n    \"Relation of user perceived response time to error measurement\"\n]\n\n# Preprocessing function\ndef preprocess(text):\n    # Lowercase\n    text = text.lower()\n    # Remove punctuation\n    text = re.sub(r'\\W', ' ', text)\n    # Tokenize\n    tokens = word_tokenize(text)\n    # Remove stop words\n    stop_words = set(stopwords.words('english'))\n    tokens = [word for word in tokens if word not in stop_words]\n    # Stemming\n    ps = PorterStemmer()\n    tokens = [ps.stem(word) for word in tokens]\n    return ' '.join(tokens)\n\n# Preprocess all documents\npreprocessed_documents = [preprocess(doc) for doc in documents]\n\n# Vectorize the documents using TF-IDF\ntfidf_vectorizer = TfidfVectorizer()\nX_tfidf = tfidf_vectorizer.fit_transform(preprocessed_documents)\n\n# Train the NMF model\nnmf = NMF(n_components=2, random_state=0)\nnmf.fit(X_tfidf)\n\n# Print the topics\nfor idx, topic in enumerate(nmf.components_):\n    print(f\"Topic: {idx} \\nWords: {', '.join([tfidf_vectorizer.get_feature_names_out()[i] for i in topic.argsort()[-10:]])}\\n\")\n\nTopic: 0 \nWords: lab, machin, user, engin, test, human, manag, interfac, ep, system\n\nTopic: 1 \nWords: comput, opinion, survey, measur, perceiv, relat, error, user, time, respons\n\n\n\n\n\nLSA\n\n# LSA\nimport re\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.decomposition import TruncatedSVD\nfrom nltk.corpus import stopwords\nfrom nltk.tokenize import word_tokenize\nfrom nltk.stem import PorterStemmer\nimport nltk\n\nnltk.download('punkt')\nnltk.download('stopwords')\n\n# Sample documents\ndocuments = [\n    \"Human machine interface for lab abc computer applications.\",\n    \"A survey of user opinion of computer system response time.\",\n    \"The EPS user interface management system.\",\n    \"System and human system engineering testing of EPS.\",\n    \"Relation of user perceived response time to error measurement.\"\n]\n\n# Preprocessing function\ndef preprocess(text):\n    # Lowercase\n    text = text.lower()\n    # Remove punctuation\n    text = re.sub(r'\\W', ' ', text)\n    # Tokenize\n    tokens = word_tokenize(text)\n    # Remove stop words\n    stop_words = set(stopwords.words('english'))\n    tokens = [word for word in tokens if word not in stop_words]\n    # Stemming\n    ps = PorterStemmer()\n    tokens = [ps.stem(word) for word in tokens]\n    return ' '.join(tokens)\n\n# Preprocess all documents\npreprocessed_documents = [preprocess(doc) for doc in documents]\n# Vectorize the preprocessed documents using TF-IDF\ntfidf_vectorizer = TfidfVectorizer()\nX_tfidf = tfidf_vectorizer.fit_transform(preprocessed_documents)\n\n# Apply Truncated SVD (LSA)\nlsa = TruncatedSVD(n_components=2, random_state=0)\nX_lsa = lsa.fit_transform(X_tfidf)\n\n# Print the topics\nterms = tfidf_vectorizer.get_feature_names_out()\nfor idx, component in enumerate(lsa.components_):\n    print(f\"Topic {idx}:\")\n    for i in component.argsort()[-10:]:\n        print(f\"{terms[i]}\", end=' ')\n    print(\"\\n\")\n\n# Print word-topic matrix to show embeddings of terms\nprint(\"Word-Topic Matrix (first 10 terms):\\n\", lsa.components_[:, :10])\n\nTopic 0:\nopinion human comput time respons manag interfac ep user system \n\nTopic 1:\ncomput opinion survey user measur perceiv relat error time respons \n\nWord-Topic Matrix (first 10 terms):\n [[ 0.09173987  0.09173987  0.21909378  0.16600004  0.32477867  0.10543331\n   0.20794293  0.26486604  0.09173987  0.09173987]\n [-0.1077054  -0.1077054   0.05139182 -0.17741717 -0.25731592  0.27463756\n  -0.23003509 -0.2010729  -0.1077054  -0.1077054 ]]\n\n\n\nterms.shape\n\n(21,)\n\n\n\nlsa.components_.shape\n\n(2, 21)",
+    "crumbs": [
+      "Topic Modelling BOW"
+    ]
+  },
+  {
+    "objectID": "topic_modelling_bow.html#term-embeddings-in-topic-analysis",
+    "href": "topic_modelling_bow.html#term-embeddings-in-topic-analysis",
+    "title": "Topic Modelling BOW",
+    "section": "Term Embeddings in Topic Analysis",
+    "text": "Term Embeddings in Topic Analysis\nTerm embeddings are dense vector representations of words that capture semantic meanings. They are not inherently part of the traditional algorithms like LDA, NMF, and LSA. However, embeddings can be used in conjunction with these algorithms to enhance their performance. For instance:\n\nLDA and NMF: Typically do not use term embeddings directly. They work with the term-document matrix (from Count Vectorizer or TF-IDF).\nLSA: Can be considered a precursor to modern embedding techniques. It reduces the dimensionality of the term-document matrix, uncovering latent semantic structures, but does not produce embeddings in the modern sense (like Word2Vec or GloVe).\n\n\nLSA and Embeddings\n\nLSA (Latent Semantic Analysis):\n\nReduction to Latent Space: LSA uses Singular Value Decomposition (SVD) to reduce the high-dimensional term-document matrix to a lower-dimensional space. This reduced space can be seen as capturing latent semantic structures.\nDocument-Topic and Word-Topic Matrices: In LSA, the matrices obtained from SVD can be viewed as embeddings in a reduced semantic space. For instance, the X_lsa matrix represents documents in terms of latent topics, while the other matrices (U, Σ, and V^T from SVD) represent relationships between terms and topics.\nSimilarity to Embeddings: The key similarity is that both embeddings and LSA capture semantic relationships and reduce dimensionality. However, LSA’s vectors are derived from linear algebra rather than neural network-based optimization.\n\n\n\nWhy NMF and LDA Aren’t Typically Considered Embeddings\n\nNMF (Non-negative Matrix Factorization):\n\nMatrix Factorization: NMF factorizes the term-document matrix into two lower-dimensional matrices (document-topic and topic-word) with non-negative constraints. These matrices can be interpreted similarly to embeddings, but they are not typically referred to as embeddings because they are not trained in the same way as traditional embeddings.\nInterpretability: NMF’s components are directly interpretable as topics, which is different from the general-purpose semantic vectors produced by embeddings.\n\n\n\nLDA (Latent Dirichlet Allocation):\n\nProbabilistic Model: LDA is a generative probabilistic model that assumes documents are mixtures of topics, and topics are mixtures of words. It outputs distributions over topics for each document and distributions over words for each topic.\nDistributional Output: The outputs (document-topic and topic-word distributions) can be high-dimensional and sparse, contrasting with the dense, fixed-length vectors of embeddings.\nInterpretability: Like NMF, LDA’s outputs are highly interpretable in terms of topics but don’t function as general-purpose semantic embeddings.",
+    "crumbs": [
+      "Topic Modelling BOW"
+    ]
+  },
+  {
+    "objectID": "vector_representations.html",
+    "href": "vector_representations.html",
+    "title": "Vector representation",
+    "section": "",
+    "text": "Count Vectorizer\n\n\nDefinition: Converts a collection of text documents to a matrix of token counts.\nPurpose: To represent text data as numerical data for machine learning algorithms.\n\nHow it works: - Each unique word in the corpus is assigned a unique integer index. - The output is a sparse matrix where each row represents a document and each column represents a word, with the value being the count of the word in that document.\nTF-IDF (Term Frequency-Inverse Document Frequency)\n\nDefinition: Converts a collection of raw documents to a matrix of TF-IDF features.\nPurpose: To reflect the importance of a word in a document relative to the entire corpus.\nComponents:\n\nTerm Frequency (TF): The number of times a word appears in a document, divided by the total number of words in that document.\nInverse Document Frequency (IDF): The logarithm of the total number of documents divided by the number of documents containing the word. This helps reduce the weight of common words.\n\n\nHow it works: - Words that are frequent in a document but rare in the corpus get higher scores. - The output is a sparse matrix similar to Count Vectorizer but with TF-IDF scores instead of counts.\n\nimport rez\nfrom sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer\nfrom sklearn.decomposition import LatentDirichletAllocation, NMF\nfrom nltk.corpus import stopwords\nfrom nltk.tokenize import word_tokenize\nfrom nltk.stem import PorterStemmer\nimport nltk\n\nnltk.download('punkt')\nnltk.download('stopwords')\n\n# Sample documents\ndocuments = [\n    \"Human machine interface for lab abc computer applications.\",\n    \"A survey of user opinion of computer system response time.\",\n    \"The EPS user interface management system.\",\n    \"System and human system engineering testing of EPS.\",\n    \"Relation of user perceived response time to error measurement.\"\n]\n\n[nltk_data] Downloading package punkt to /home/frangs/nltk_data...\n[nltk_data]   Unzipping tokenizers/punkt.zip.\n[nltk_data] Downloading package stopwords to /home/frangs/nltk_data...\n[nltk_data]   Package stopwords is already up-to-date!\n\n\n\n# Preprocessing function\ndef preprocess(text):\n    # Lowercase\n    text = text.lower()\n    # Remove punctuation\n    text = re.sub(r'\\W', ' ', text)\n    # Tokenize\n    tokens = word_tokenize(text)\n    # Remove stop words\n    stop_words = set(stopwords.words('english'))\n    tokens = [word for word in tokens if word not in stop_words]\n    # Stemming\n    ps = PorterStemmer()\n    tokens = [ps.stem(word) for word in tokens]\n    return ' '.join(tokens)\n\n# Preprocess all documents\npreprocessed_documents = [preprocess(doc) for doc in documents]\n\n\npreprocessed_documents\n\n['human machin interfac lab abc comput applic',\n 'survey user opinion comput system respons time',\n 'ep user interfac manag system',\n 'system human system engin test ep',\n 'relat user perceiv respons time error measur']\n\n\n\n# Count Vectorizer Example\ncount_vectorizer = CountVectorizer()\nX_counts = count_vectorizer.fit_transform(preprocessed_documents)\n\n# TF-IDF Example\ntfidf_vectorizer = TfidfVectorizer()\nX_tfidf = tfidf_vectorizer.fit_transform(preprocessed_documents)\n\n\n# Display the vectorized data\nprint(\"Count Vectorizer Matrix:\\n\", X_counts.toarray())\nprint(\"TF-IDF Matrix:\\n\", X_tfidf.toarray())\n\n# Print the feature names (vocabulary)\nprint(\"Count Vectorizer Feature Names:\\n\", count_vectorizer.get_feature_names_out())\nprint(\"TF-IDF Feature Names:\\n\", tfidf_vectorizer.get_feature_names_out())\n\nCount Vectorizer Matrix:\n [[1 1 1 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0]\n [0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 1 1]\n [0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 1]\n [0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 2 1 0 0]\n [0 0 0 0 0 1 0 0 0 0 0 1 0 1 1 1 0 0 0 1 1]]\nTF-IDF Matrix:\n [[0.40986539 0.40986539 0.33067681 0.         0.         0.\n  0.33067681 0.33067681 0.40986539 0.40986539 0.         0.\n  0.         0.         0.         0.         0.         0.\n  0.         0.         0.        ]\n [0.         0.         0.36635462 0.         0.         0.\n  0.         0.         0.         0.         0.         0.\n  0.45408711 0.         0.         0.36635462 0.45408711 0.30410743\n  0.         0.36635462 0.30410743]\n [0.         0.         0.         0.         0.45109178 0.\n  0.         0.45109178 0.         0.         0.55911663 0.\n  0.         0.         0.         0.         0.         0.37444693\n  0.         0.         0.37444693]\n [0.         0.         0.         0.44298611 0.3573984  0.\n  0.3573984  0.         0.         0.         0.         0.\n  0.         0.         0.         0.         0.         0.59334592\n  0.44298611 0.         0.        ]\n [0.         0.         0.         0.         0.         0.41701629\n  0.         0.         0.         0.         0.         0.41701629\n  0.         0.41701629 0.41701629 0.33644611 0.         0.\n  0.         0.33644611 0.27928067]]\nCount Vectorizer Feature Names:\n ['abc' 'applic' 'comput' 'engin' 'ep' 'error' 'human' 'interfac' 'lab'\n 'machin' 'manag' 'measur' 'opinion' 'perceiv' 'relat' 'respons' 'survey'\n 'system' 'test' 'time' 'user']\nTF-IDF Feature Names:\n ['abc' 'applic' 'comput' 'engin' 'ep' 'error' 'human' 'interfac' 'lab'\n 'machin' 'manag' 'measur' 'opinion' 'perceiv' 'relat' 'respons' 'survey'\n 'system' 'test' 'time' 'user']",
+    "crumbs": [
+      "Vector representation"
+    ]
+  }
+]

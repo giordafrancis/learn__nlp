@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "learn__nlp"
+  site-url: "https://giordafrancis.github.io/learn__nlp"
+  description: "A repo where I save my nlp learning"
+  repo-branch: main
+  repo-url: "https://github.com/giordafrancis/learn__nlp"

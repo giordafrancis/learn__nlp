@@ -1,0 +1,7 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - topic_modelling_bow.ipynb
+      - topic_modelling_modern_approaches.ipynb
+      - vector_representations.ipynb

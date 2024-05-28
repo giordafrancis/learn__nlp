@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>learn__nlp - Topic Modelling Modern Approaches</title>
+<title>learn__nlp - Vector representation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,10 +103,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="learn__nlp - Topic Modelling Modern Approaches">
+<meta property="og:title" content="learn__nlp - Vector representation">
 <meta property="og:description" content="A repo where I save my nlp learning">
 <meta property="og:site_name" content="learn__nlp">
-<meta name="twitter:title" content="learn__nlp - Topic Modelling Modern Approaches">
+<meta name="twitter:title" content="learn__nlp - Vector representation">
 <meta name="twitter:description" content="A repo where I save my nlp learning">
 <meta name="twitter:card" content="summary">
 </head>
@@ -132,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic_modelling_modern_approaches.html">Topic Modelling Modern Approaches</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_vector_representations.html">Vector representation</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -146,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00_vector_representations.html" class="sidebar-item-text sidebar-link">
+  <a href="./00_vector_representations.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Vector representation</span></a>
   </div>
 </li>
@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic_modelling_modern_approaches.html" class="sidebar-item-text sidebar-link active">
+  <a href="./topic_modelling_modern_approaches.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Topic Modelling Modern Approaches</span></a>
   </div>
 </li>
@@ -172,21 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#where-topic-modelling-fits-in-nlp-and-machine-learning" id="toc-where-topic-modelling-fits-in-nlp-and-machine-learning" class="nav-link active" data-scroll-target="#where-topic-modelling-fits-in-nlp-and-machine-learning">Where Topic Modelling Fits in NLP and Machine Learning</a></li>
-  <li><a href="#code-samples" id="toc-code-samples" class="nav-link" data-scroll-target="#code-samples">Code samples</a>
-  <ul class="collapse">
-  <li><a href="#example-of-a-simple-document-term-matrix" id="toc-example-of-a-simple-document-term-matrix" class="nav-link" data-scroll-target="#example-of-a-simple-document-term-matrix">Example of a simple document term matrix</a></li>
-  </ul></li>
-  <li><a href="#term-embedding" id="toc-term-embedding" class="nav-link" data-scroll-target="#term-embedding">Term Embedding</a>
-  <ul class="collapse">
-  <li><a href="#importance-of-embeddings" id="toc-importance-of-embeddings" class="nav-link" data-scroll-target="#importance-of-embeddings">Importance of Embeddings</a></li>
-  <li><a href="#popular-embedding-strategies" id="toc-popular-embedding-strategies" class="nav-link" data-scroll-target="#popular-embedding-strategies">Popular Embedding Strategies</a></li>
-  </ul></li>
-  <li><a href="#implementation-example-word2vec-with-gensim" id="toc-implementation-example-word2vec-with-gensim" class="nav-link" data-scroll-target="#implementation-example-word2vec-with-gensim">Implementation Example: Word2Vec with Gensim</a>
-  <ul class="collapse">
-  <li><a href="#code-samples-1" id="toc-code-samples-1" class="nav-link" data-scroll-target="#code-samples-1">Code Samples</a></li>
-  </ul></li>
-  <li><a href="#implementation-using-bertopic" id="toc-implementation-using-bertopic" class="nav-link" data-scroll-target="#implementation-using-bertopic">Implementation using BerTopic</a></li>
+  <li><a href="#count-vectorizer" id="toc-count-vectorizer" class="nav-link active" data-scroll-target="#count-vectorizer">Count Vectorizer</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/giordafrancis/learn__nlp/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -195,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Topic Modelling Modern Approaches</h1>
+<h1 class="title">Vector representation</h1>
 </div>
 
 
@@ -212,181 +198,136 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="count-vectorizer" class="level3">
+<h3 class="anchored" data-anchor-id="count-vectorizer">Count Vectorizer</h3>
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
-<section id="where-topic-modelling-fits-in-nlp-and-machine-learning" class="level2">
-<h2 class="anchored" data-anchor-id="where-topic-modelling-fits-in-nlp-and-machine-learning">Where Topic Modelling Fits in NLP and Machine Learning</h2>
-<ol type="1">
-<li>NLP Tasks: Topic modeling is part of unsupervised learning in NLP, often used for text mining, information retrieval, and content recommendation.</li>
-<li>Machine Learning: It utilizes unsupervised machine learning algorithms to discover hidden patterns in data without predefined labels or categories.</li>
-</ol>
-<p>Topic modelling is a technique in natural language processing (NLP) used to uncover the underlying topics that are present in a collection of documents. It helps in identifying patterns and organizing large sets of textual data by clustering similar words and phrases into topics. This technique is particularly useful for summarizing, categorizing, and analyzing text data.</p>
-</section>
-<section id="code-samples" class="level2">
-<h2 class="anchored" data-anchor-id="code-samples">Code samples</h2>
-<section id="example-of-a-simple-document-term-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="example-of-a-simple-document-term-matrix">Example of a simple document term matrix</h3>
-<div id="39a0c60f-849a-4302-903e-0ba7a69b9e12" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample documents</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>documents <span class="op">=</span> [</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The quick brown fox"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"jumps over the lazy dog"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The fox"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The dog is lazy"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize CountVectorizer</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer()</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit and transform the documents</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(documents)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to array and print</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.toarray())</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature names (vocabulary)</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vectorizer.get_feature_names_out())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1 0 1 0 0 0 0 1 1]
- [0 1 0 0 1 1 1 0 1]
- [0 0 1 0 0 0 0 0 1]
- [0 1 0 1 0 1 0 0 1]]
-['brown' 'dog' 'fox' 'is' 'jumps' 'lazy' 'over' 'quick' 'the']</code></pre>
+<ul>
+<li>Definition: Converts a collection of text documents to a matrix of token counts.</li>
+<li>Purpose: To represent text data as numerical data for machine learning algorithms.</li>
+</ul>
+<p>How it works: - Each unique word in the corpus is assigned a unique integer index. - The output is a sparse matrix where each row represents a document and each column represents a word, with the value being the count of the word in that document.</p>
+<p>TF-IDF (Term Frequency-Inverse Document Frequency)</p>
+<ul>
+<li>Definition: Converts a collection of raw documents to a matrix of TF-IDF features.</li>
+<li>Purpose: To reflect the importance of a word in a document relative to the entire corpus.</li>
+<li>Components:
+<ul>
+<li>Term Frequency (TF): The number of times a word appears in a document, divided by the total number of words in that document.</li>
+<li>Inverse Document Frequency (IDF): The logarithm of the total number of documents divided by the number of documents containing the word. This helps reduce the weight of common words.</li>
+</ul></li>
+</ul>
+<p>How it works: - Words that are frequent in a document but rare in the corpus get higher scores. - The output is a sparse matrix similar to Count Vectorizer but with TF-IDF scores instead of counts.</p>
+<div id="b9fd6f5c-087d-4621-be0f-d72214aa806b" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer, TfidfVectorizer</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> LatentDirichletAllocation, NMF</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> PorterStemmer</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample documents</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>documents <span class="op">=</span> [</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Human machine interface for lab abc computer applications."</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"A survey of user opinion of computer system response time."</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The EPS user interface management system."</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"System and human system engineering testing of EPS."</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Relation of user perceived response time to error measurement."</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package punkt to /home/frangs/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to /home/frangs/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="term-embedding" class="level2">
-<h2 class="anchored" data-anchor-id="term-embedding">Term Embedding</h2>
-<p>Embeddings are dense vector representations of words or phrases that capture semantic meanings. Unlike sparse representations like one-hot encoding, embeddings map words to continuous vector spaces where semantically similar words have similar representations. These vectors are typically of lower dimensions (e.g., 100-300 dimensions) compared to the vocabulary size.</p>
-<section id="importance-of-embeddings" class="level3">
-<h3 class="anchored" data-anchor-id="importance-of-embeddings">Importance of Embeddings</h3>
-<ol type="1">
-<li>Semantic Similarity: Words with similar meanings are closer in the embedding space.</li>
-<li>Dimensionality Reduction: Embeddings reduce the dimensionality of text data while preserving meaningful relationships.</li>
-<li>Improved Performance: Embeddings improve the performance of NLP models by providing more informative features compared to traditional methods.</li>
-</ol>
-</section>
-<section id="popular-embedding-strategies" class="level3">
-<h3 class="anchored" data-anchor-id="popular-embedding-strategies">Popular Embedding Strategies</h3>
-<ol type="1">
-<li>Word2Vec: Predicts a word given its context (Skip-gram) or predicts the context given a word (CBOW).</li>
-<li>GloVe (Global Vectors for Word Representation): Uses co-occurrence statistics to learn word embeddings.</li>
-<li>FastText: Extends Word2Vec by considering subword information, which helps with out-of-vocabulary words.</li>
-<li>BERT (Bidirectional Encoder Representations from Transformers): Uses transformer-based architecture to create context-aware embeddings.</li>
-</ol>
-</section>
-</section>
-<section id="implementation-example-word2vec-with-gensim" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-example-word2vec-with-gensim">Implementation Example: Word2Vec with Gensim</h2>
-<section id="code-samples-1" class="level3">
-<h3 class="anchored" data-anchor-id="code-samples-1">Code Samples</h3>
-<div id="55bfbceb-6afe-4fd5-a27c-9a4bfef9b537" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> Word2Vec</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.utils <span class="im">import</span> simple_preprocess</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.test.utils <span class="im">import</span> common_texts  <span class="co"># Example dataset</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenize and preprocess the text</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sentences <span class="op">=</span> [simple_preprocess(<span class="st">" "</span>.join(doc)) <span class="cf">for</span> doc <span class="kw">in</span> common_texts]</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Word2Vec model</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Word2Vec(sentences, vector_size<span class="op">=</span><span class="dv">100</span>, window<span class="op">=</span><span class="dv">5</span>, min_count<span class="op">=</span><span class="dv">1</span>, workers<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the model</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">"word2vec.model"</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the model</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Word2Vec.load(<span class="st">"word2vec.model"</span>)</span>
+<div id="42373527-8a1a-4600-9dec-a9548e5fde98" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing function</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess(text):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Lowercase</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> text.lower()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove punctuation</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r'\W'</span>, <span class="st">' '</span>, text)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Tokenize</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    tokens <span class="op">=</span> word_tokenize(text)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove stop words</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    tokens <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> tokens <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Stemming</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    ps <span class="op">=</span> PorterStemmer()</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    tokens <span class="op">=</span> [ps.stem(word) <span class="cf">for</span> word <span class="kw">in</span> tokens]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">' '</span>.join(tokens)</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the vector for a specific word</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>vector <span class="op">=</span> model.wv[<span class="st">'computer'</span>]</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess all documents</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>preprocessed_documents <span class="op">=</span> [preprocess(doc) <span class="cf">for</span> doc <span class="kw">in</span> documents]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="de670ddf-8dbf-45e4-920e-b26aac40be39" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>preprocessed_documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>['human machin interfac lab abc comput applic',
+ 'survey user opinion comput system respons time',
+ 'ep user interfac manag system',
+ 'system human system engin test ep',
+ 'relat user perceiv respons time error measur']</code></pre>
+</div>
+</div>
+<div id="47e80f6f-35a1-49eb-82c2-2612ac70cf13" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count Vectorizer Example</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>count_vectorizer <span class="op">=</span> CountVectorizer()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>X_counts <span class="op">=</span> count_vectorizer.fit_transform(preprocessed_documents)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># TF-IDF Example</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>tfidf_vectorizer <span class="op">=</span> TfidfVectorizer()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>X_tfidf <span class="op">=</span> tfidf_vectorizer.fit_transform(preprocessed_documents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9fefcbc8-0fed-40bb-ab7d-53b8297da75d" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the vectorized data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Count Vectorizer Matrix:</span><span class="ch">\n</span><span class="st">"</span>, X_counts.toarray())</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TF-IDF Matrix:</span><span class="ch">\n</span><span class="st">"</span>, X_tfidf.toarray())</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the feature names (vocabulary)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Count Vectorizer Feature Names:</span><span class="ch">\n</span><span class="st">"</span>, count_vectorizer.get_feature_names_out())</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TF-IDF Feature Names:</span><span class="ch">\n</span><span class="st">"</span>, tfidf_vectorizer.get_feature_names_out())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[-0.00515774 -0.00667028 -0.0077791   0.00831315 -0.00198292 -0.00685696
- -0.0041556   0.00514562 -0.00286997 -0.00375075  0.0016219  -0.0027771
- -0.00158482  0.0010748  -0.00297881  0.00852176  0.00391207 -0.00996176
-  0.00626142 -0.00675622  0.00076966  0.00440552 -0.00510486 -0.00211128
-  0.00809783 -0.00424503 -0.00763848  0.00926061 -0.00215612 -0.00472081
-  0.00857329  0.00428459  0.0043261   0.00928722 -0.00845554  0.00525685
-  0.00203994  0.0041895   0.00169839  0.00446543  0.0044876   0.0061063
- -0.00320303 -0.00457706 -0.00042664  0.00253447 -0.00326412  0.00605948
-  0.00415534  0.00776685  0.00257002  0.00811905 -0.00138761  0.00808028
-  0.0037181  -0.00804967 -0.00393476 -0.0024726   0.00489447 -0.00087241
- -0.00283173  0.00783599  0.00932561 -0.0016154  -0.00516075 -0.00470313
- -0.00484746 -0.00960562  0.00137242 -0.00422615  0.00252744  0.00561612
- -0.00406709 -0.00959937  0.00154715 -0.00670207  0.0024959  -0.00378173
-  0.00708048  0.00064041  0.00356198 -0.00273993 -0.00171105  0.00765502
-  0.00140809 -0.00585215 -0.00783678  0.00123305  0.00645651  0.00555797
- -0.00897966  0.00859466  0.00404816  0.00747178  0.00974917 -0.0072917
- -0.00904259  0.0058377   0.00939395  0.00350795]</code></pre>
+<pre><code>Count Vectorizer Matrix:
+ [[1 1 1 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 1 1]
+ [0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 1]
+ [0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 2 1 0 0]
+ [0 0 0 0 0 1 0 0 0 0 0 1 0 1 1 1 0 0 0 1 1]]
+TF-IDF Matrix:
+ [[0.40986539 0.40986539 0.33067681 0.         0.         0.
+  0.33067681 0.33067681 0.40986539 0.40986539 0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.        ]
+ [0.         0.         0.36635462 0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.45408711 0.         0.         0.36635462 0.45408711 0.30410743
+  0.         0.36635462 0.30410743]
+ [0.         0.         0.         0.         0.45109178 0.
+  0.         0.45109178 0.         0.         0.55911663 0.
+  0.         0.         0.         0.         0.         0.37444693
+  0.         0.         0.37444693]
+ [0.         0.         0.         0.44298611 0.3573984  0.
+  0.3573984  0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.59334592
+  0.44298611 0.         0.        ]
+ [0.         0.         0.         0.         0.         0.41701629
+  0.         0.         0.         0.         0.         0.41701629
+  0.         0.41701629 0.41701629 0.33644611 0.         0.
+  0.         0.33644611 0.27928067]]
+Count Vectorizer Feature Names:
+ ['abc' 'applic' 'comput' 'engin' 'ep' 'error' 'human' 'interfac' 'lab'
+ 'machin' 'manag' 'measur' 'opinion' 'perceiv' 'relat' 'respons' 'survey'
+ 'system' 'test' 'time' 'user']
+TF-IDF Feature Names:
+ ['abc' 'applic' 'comput' 'engin' 'ep' 'error' 'human' 'interfac' 'lab'
+ 'machin' 'manag' 'measur' 'opinion' 'perceiv' 'relat' 'respons' 'survey'
+ 'system' 'test' 'time' 'user']</code></pre>
 </div>
-</div>
-<div id="fd8324f4-a5ca-4fa5-b645-5bbc970303ce" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>uwords <span class="op">=</span> <span class="bu">set</span>(w <span class="cf">for</span> doc <span class="kw">in</span> common_texts <span class="cf">for</span> w <span class="kw">in</span> doc)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>uwords, <span class="bu">len</span>(uwords)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>({'computer',
-  'eps',
-  'graph',
-  'human',
-  'interface',
-  'minors',
-  'response',
-  'survey',
-  'system',
-  'time',
-  'trees',
-  'user'},
- 12)</code></pre>
-</div>
-</div>
-<div id="0bf4c149-5006-4fea-a92d-d49e05760356" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.wv)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>KeyedVectors&lt;vector_size=100, 12 keys&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>100</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="implementation-using-bertopic" class="level2">
-<h2 class="anchored" data-anchor-id="implementation-using-bertopic">Implementation using BerTopic</h2>
-<p>BerTopic docs are a great reference.</p>
-<div id="197c6958-b492-492b-bae0-e1aad5c29266" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bertopic <span class="im">import</span> BERTopic</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_20newsgroups</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>newsgroups_train <span class="op">=</span> fetch_20newsgroups(subset<span class="op">=</span><span class="st">'train'</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>docs <span class="op">=</span> newsgroups_train.data</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize BERTopic</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>topic_model <span class="op">=</span> BERTopic()</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>topics, _ <span class="op">=</span> topic_model.fit_transform(docs)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the topics</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(topic_model.get_topic_info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We can extract info at a document level.</p>
-<div id="2398d61e-ac79-4a55-9dc3-e13cc6b80ba5" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># per document info</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>topic_model.get_document_info(docs).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="bc4d1dc8-f4f4-4e2c-8fb5-a9ac44fef590" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>topic_df <span class="op">=</span> topic_model.get_topic_info()</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>row <span class="op">=</span> topic_df.sample(<span class="dv">1</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>topic_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="5d0559bc-0709-40a3-a5fc-93d49ddbb0ec" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>similar_topics, similarity <span class="op">=</span> topic_model.find_topics(<span class="st">"car"</span>, top_n<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(similar_topics)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>topic_model.get_topic(similar_topics[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

@@ -146,12 +146,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">learn__nlp</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./topic_modelling_bow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Topic Modelling BOW</span></a>
   </div>
@@ -159,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./topic_modelling_modern_approaches.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Topic Modelling</span></a>
+ <span class="menu-text">Topic Modelling Modern Approaches</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -223,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>How it works: - Words that are frequent in a document but rare in the corpus get higher scores. - The output is a sparse matrix similar to Count Vectorizer but with TF-IDF scores instead of counts.</p>
-<div id="b9fd6f5c-087d-4621-be0f-d72214aa806b" class="cell" data-execution_count="1">
+<div id="b9fd6f5c-087d-4621-be0f-d72214aa806b" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rez</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer, TfidfVectorizer</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> LatentDirichletAllocation, NMF</span>
@@ -250,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [nltk_data]   Package stopwords is already up-to-date!</code></pre>
 </div>
 </div>
-<div id="42373527-8a1a-4600-9dec-a9548e5fde98" class="cell" data-execution_count="2">
+<div id="42373527-8a1a-4600-9dec-a9548e5fde98" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing function</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess(text):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Lowercase</span></span>
@@ -270,9 +264,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess all documents</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>preprocessed_documents <span class="op">=</span> [preprocess(doc) <span class="cf">for</span> doc <span class="kw">in</span> documents]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="de670ddf-8dbf-45e4-920e-b26aac40be39" class="cell" data-execution_count="3">
+<div id="de670ddf-8dbf-45e4-920e-b26aac40be39" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>preprocessed_documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display">
 <pre><code>['human machin interfac lab abc comput applic',
  'survey user opinion comput system respons time',
  'ep user interfac manag system',
@@ -280,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  'relat user perceiv respons time error measur']</code></pre>
 </div>
 </div>
-<div id="47e80f6f-35a1-49eb-82c2-2612ac70cf13" class="cell" data-execution_count="4">
+<div id="47e80f6f-35a1-49eb-82c2-2612ac70cf13" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count Vectorizer Example</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>count_vectorizer <span class="op">=</span> CountVectorizer()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>X_counts <span class="op">=</span> count_vectorizer.fit_transform(preprocessed_documents)</span>
@@ -289,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>tfidf_vectorizer <span class="op">=</span> TfidfVectorizer()</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>X_tfidf <span class="op">=</span> tfidf_vectorizer.fit_transform(preprocessed_documents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="9fefcbc8-0fed-40bb-ab7d-53b8297da75d" class="cell" data-execution_count="6">
+<div id="9fefcbc8-0fed-40bb-ab7d-53b8297da75d" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the vectorized data</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Count Vectorizer Matrix:</span><span class="ch">\n</span><span class="st">"</span>, X_counts.toarray())</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TF-IDF Matrix:</span><span class="ch">\n</span><span class="st">"</span>, X_tfidf.toarray())</span>

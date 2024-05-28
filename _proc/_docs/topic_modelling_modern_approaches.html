@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A further look at the role of Embeddings and Transformer approaches to Topic Modelling">
 
 <title>learn__nlp - Topic Modelling Modern Approaches</title>
 <style>
@@ -57,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,14 +101,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="learn__nlp - Topic Modelling Modern Approaches">
-<meta property="og:description" content="A repo where I save my nlp learning">
+<meta property="og:description" content="A further look at the role of Embeddings and Transformer approaches to Topic Modelling">
 <meta property="og:site_name" content="learn__nlp">
 <meta name="twitter:title" content="learn__nlp - Topic Modelling Modern Approaches">
-<meta name="twitter:description" content="A repo where I save my nlp learning">
+<meta name="twitter:description" content="A further look at the role of Embeddings and Transformer approaches to Topic Modelling">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -198,6 +202,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="title">Topic Modelling Modern Approaches</h1>
 </div>
 
+<div>
+  <div class="description">
+    A further look at the role of Embeddings and Transformer approaches to Topic Modelling
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -225,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="code-samples">Code samples</h2>
 <section id="example-of-a-simple-document-term-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="example-of-a-simple-document-term-matrix">Example of a simple document term matrix</h3>
-<div id="39a0c60f-849a-4302-903e-0ba7a69b9e12" class="cell">
+<div id="39a0c60f-849a-4302-903e-0ba7a69b9e12" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample documents</span></span>
@@ -282,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="implementation-example-word2vec-with-gensim">Implementation Example: Word2Vec with Gensim</h2>
 <section id="code-samples-1" class="level3">
 <h3 class="anchored" data-anchor-id="code-samples-1">Code Samples</h3>
-<div id="55bfbceb-6afe-4fd5-a27c-9a4bfef9b537" class="cell">
+<div id="55bfbceb-6afe-4fd5-a27c-9a4bfef9b537" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> Word2Vec</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.utils <span class="im">import</span> simple_preprocess</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.test.utils <span class="im">import</span> common_texts  <span class="co"># Example dataset</span></span>
@@ -322,10 +331,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  -0.00904259  0.0058377   0.00939395  0.00350795]</code></pre>
 </div>
 </div>
-<div id="fd8324f4-a5ca-4fa5-b645-5bbc970303ce" class="cell">
+<div id="fd8324f4-a5ca-4fa5-b645-5bbc970303ce" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>uwords <span class="op">=</span> <span class="bu">set</span>(w <span class="cf">for</span> doc <span class="kw">in</span> common_texts <span class="cf">for</span> w <span class="kw">in</span> doc)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>uwords, <span class="bu">len</span>(uwords)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>({'computer',
   'eps',
   'graph',
@@ -341,13 +350,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  12)</code></pre>
 </div>
 </div>
-<div id="0bf4c149-5006-4fea-a92d-d49e05760356" class="cell">
+<div id="0bf4c149-5006-4fea-a92d-d49e05760356" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.wv)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>KeyedVectors&lt;vector_size=100, 12 keys&gt;</code></pre>
 </div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>100</code></pre>
 </div>
 </div>
@@ -356,37 +365,268 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="implementation-using-bertopic" class="level2">
 <h2 class="anchored" data-anchor-id="implementation-using-bertopic">Implementation using BerTopic</h2>
 <p>BerTopic docs are a great reference.</p>
-<div id="197c6958-b492-492b-bae0-e1aad5c29266" class="cell">
+<div id="27c27a7e-227a-41e9-b9d7-6c59b9fd66c5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bertopic <span class="im">import</span> BERTopic</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_20newsgroups</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>newsgroups_train <span class="op">=</span> fetch_20newsgroups(subset<span class="op">=</span><span class="st">'train'</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>docs <span class="op">=</span> newsgroups_train.data</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize BERTopic</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>topic_model <span class="op">=</span> BERTopic()</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>topics, _ <span class="op">=</span> topic_model.fit_transform(docs)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the topics</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(topic_model.get_topic_info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pickle</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>newsgroups_train <span class="op">=</span> fetch_20newsgroups(subset<span class="op">=</span><span class="st">'train'</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>docs <span class="op">=</span> newsgroups_train.data</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialise BERTopic</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>topic_model <span class="op">=</span> BERTopic()</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>model_path <span class="op">=</span> Path(<span class="st">"bertopic_model.pkl"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> model_path.exists():</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    topics, _ <span class="op">=</span> topic_model.fit_transform(docs)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(model_path, <span class="st">'wb'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        pickle.dump(topic_model, <span class="bu">file</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save the model</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(model_path, <span class="st">'rb'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        topic_model  <span class="op">=</span> pickle.load(<span class="bu">file</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the topics</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>topic_model.get_topic_info().head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Topic</th>
+<th data-quarto-table-cell-role="th">Count</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Representation</th>
+<th data-quarto-table-cell-role="th">Representative_Docs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-1</td>
+<td>3602</td>
+<td>-1_the_and_to_of</td>
+<td>[the, and, to, of, for, in, is, from, on, it]</td>
+<td>[From: tgl+@cs.cmu.edu (Tom Lane)\nSubject: JP...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+<td>486</td>
+<td>0_he_year_baseball_game</td>
+<td>[he, year, baseball, game, runs, team, pitchin...</td>
+<td>[From: mse@cc.bellcore.com (25836-michael even...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>332</td>
+<td>1_gun_guns_firearms_weapons</td>
+<td>[gun, guns, firearms, weapons, militia, amendm...</td>
+<td>[From: PA146008@utkvm1.utk.edu (David Veal)\nS...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2</td>
+<td>310</td>
+<td>2_clipper_encryption_chip_key</td>
+<td>[clipper, encryption, chip, key, keys, escrow,...</td>
+<td>[Subject: text of White House announcement and...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>3</td>
+<td>246</td>
+<td>3_car_cars_saturn_dealer</td>
+<td>[car, cars, saturn, dealer, engine, toyota, fo...</td>
+<td>[From: CPKJP@vm.cc.latech.edu (Kevin Parker)\n...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 </div>
 <p>We can extract info at a document level.</p>
-<div id="2398d61e-ac79-4a55-9dc3-e13cc6b80ba5" class="cell">
+<div id="2398d61e-ac79-4a55-9dc3-e13cc6b80ba5" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># per document info</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>topic_model.get_document_info(docs).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Document</th>
+<th data-quarto-table-cell-role="th">Topic</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Representation</th>
+<th data-quarto-table-cell-role="th">Representative_Docs</th>
+<th data-quarto-table-cell-role="th">Top_n_words</th>
+<th data-quarto-table-cell-role="th">Probability</th>
+<th data-quarto-table-cell-role="th">Representative_document</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>From: lerxst@wam.umd.edu (where's my thing)\nS...</td>
+<td>3</td>
+<td>3_car_cars_saturn_dealer</td>
+<td>[car, cars, saturn, dealer, engine, toyota, fo...</td>
+<td>[From: CPKJP@vm.cc.latech.edu (Kevin Parker)\n...</td>
+<td>car - cars - saturn - dealer - engine - toyota...</td>
+<td>0.766315</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>From: guykuo@carson.u.washington.edu (Guy Kuo)...</td>
+<td>148</td>
+<td>148_iisi_clock_kuo_mhz</td>
+<td>[iisi, clock, kuo, mhz, cpu, si, speed, guykuo...</td>
+<td>[From: durtralp@ux1.isu.edu (Ralph Durtschi)\n...</td>
+<td>iisi - clock - kuo - mhz - cpu - si - speed - ...</td>
+<td>0.711629</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>From: twillis@ec.ecn.purdue.edu (Thomas E Will...</td>
+<td>-1</td>
+<td>-1_the_and_to_of</td>
+<td>[the, and, to, of, for, in, is, from, on, it]</td>
+<td>[From: tgl+@cs.cmu.edu (Tom Lane)\nSubject: JP...</td>
+<td>the - and - to - of - for - in - is - from - o...</td>
+<td>0.000000</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>From: jgreen@amber (Joe Green)\nSubject: Re: W...</td>
+<td>-1</td>
+<td>-1_the_and_to_of</td>
+<td>[the, and, to, of, for, in, is, from, on, it]</td>
+<td>[From: tgl+@cs.cmu.edu (Tom Lane)\nSubject: JP...</td>
+<td>the - and - to - of - for - in - is - from - o...</td>
+<td>0.000000</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>From: jcm@head-cfa.harvard.edu (Jonathan McDow...</td>
+<td>-1</td>
+<td>-1_the_and_to_of</td>
+<td>[the, and, to, of, for, in, is, from, on, it]</td>
+<td>[From: tgl+@cs.cmu.edu (Tom Lane)\nSubject: JP...</td>
+<td>the - and - to - of - for - in - is - from - o...</td>
+<td>0.000000</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div id="bc4d1dc8-f4f4-4e2c-8fb5-a9ac44fef590" class="cell">
+</div>
+</div>
+</div>
+<div id="bc4d1dc8-f4f4-4e2c-8fb5-a9ac44fef590" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>topic_df <span class="op">=</span> topic_model.get_topic_info()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>row <span class="op">=</span> topic_df.sample(<span class="dv">1</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>topic_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Topic</th>
+<th data-quarto-table-cell-role="th">Count</th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Representation</th>
+<th data-quarto-table-cell-role="th">Representative_Docs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-1</td>
+<td>3602</td>
+<td>-1_the_and_to_of</td>
+<td>[the, and, to, of, for, in, is, from, on, it]</td>
+<td>[From: tgl+@cs.cmu.edu (Tom Lane)\nSubject: JP...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+<td>486</td>
+<td>0_he_year_baseball_game</td>
+<td>[he, year, baseball, game, runs, team, pitchin...</td>
+<td>[From: mse@cc.bellcore.com (25836-michael even...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>332</td>
+<td>1_gun_guns_firearms_weapons</td>
+<td>[gun, guns, firearms, weapons, militia, amendm...</td>
+<td>[From: PA146008@utkvm1.utk.edu (David Veal)\nS...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2</td>
+<td>310</td>
+<td>2_clipper_encryption_chip_key</td>
+<td>[clipper, encryption, chip, key, keys, escrow,...</td>
+<td>[Subject: text of White House announcement and...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>3</td>
+<td>246</td>
+<td>3_car_cars_saturn_dealer</td>
+<td>[car, cars, saturn, dealer, engine, toyota, fo...</td>
+<td>[From: CPKJP@vm.cc.latech.edu (Kevin Parker)\n...</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div id="5d0559bc-0709-40a3-a5fc-93d49ddbb0ec" class="cell">
+</div>
+</div>
+</div>
+<div id="5d0559bc-0709-40a3-a5fc-93d49ddbb0ec" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>similar_topics, similarity <span class="op">=</span> topic_model.find_topics(<span class="st">"car"</span>, top_n<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(similar_topics)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>topic_model.get_topic(similar_topics[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[3, 51, 27, 185, 212]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[('car', 0.021168209993219375),
+ ('cars', 0.012855802188158174),
+ ('saturn', 0.008281874562218591),
+ ('dealer', 0.00795250455143509),
+ ('engine', 0.00746471868549103),
+ ('toyota', 0.006062030111426506),
+ ('ford', 0.005955146329301384),
+ ('honda', 0.005829464376667094),
+ ('price', 0.005762489694584342),
+ ('integra', 0.005270325883958921)]</code></pre>
+</div>
 </div>
 
 

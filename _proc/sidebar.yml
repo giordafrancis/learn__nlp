@@ -4,3 +4,5 @@ website:
       - 00_vector_representations.ipynb
       - 01_topic_modelling_bow.ipynb
       - 02_topic_modelling_modern_approaches.ipynb
+      - 03_bertopic_ex.ipynb
+      - 04_BERTopic_Best_Practices.ipynb
